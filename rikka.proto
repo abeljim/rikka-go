@@ -1,40 +1,62 @@
 syntax = "proto3";
 
+
+// This is a request for a question to be answered based off a passage 
+// currently passage max is 386 words and 50 for question 
+// This is subject to change and updated information can be found in Rikka github settings file
 message QueryRequest{ 
     string passage = 1;
     string question = 2;
 }
 
+// This is the reply from a query request consisting of a answer and a score
+// answer as no limitations on size except as big as inputed passage 
+// score is a float returned as a string for flexiblity 
 message AnswerReply{
     string answer = 1;
     string score = 2;
 } 
 
-message SumRequest{
+// The Summary request is made up of a passage 
+// Any size is fine 
+message SummaryRequest{
     string passage = 1;
 }
 
-message SumReply{
+// The Reply is a string of any size 
+// Just smaller than the orginal
+message SummaryReply{
     string summary = 1;
 }
 
+// The question request is made up of a passage and term 
+// The question will invlove the term based off passage 
 message QuestionRequest{
     string passage = 1;
     string term = 2;
 }
 
+// The question returned is a string 
 message QuestionReply{
     string question = 1;
 }
 
-service Mai {
-    rpc Mai(QueryRequest) returns (AnswerReply) {}
+// This is the AI for getting a Question Answered 
+// Input is a passage and question 
+// Ouput is a answer and score 
+service MaiTheQueryGuy {
+    rpc Query(QueryRequest) returns (AnswerReply) {}
 }
 
-service Sum {
-    rpc Sum(SumRequest) returns (SumReply) {}
+// This AI is for getting passages summarized
+// Input a Passage and recieve summary 
+service SusanTheDestroyer {
+    rpc Summarize(SummaryRequest) returns (SummaryReply) {}
 }
 
-service Rui {
-    rpc Rui(QueryRequest) returns (QuestionReply) {}
+// This AI is for getting a question generated
+// input is a passage and related term 
+// output is a question 
+service RuiGivesQuestionSuggestion {
+    rpc GenerateQuestion(QuestionRequest) returns (QuestionReply) {}
 }
