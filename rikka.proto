@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+message QueryRequest{ 
+    string passage = 1;
+    string question = 2;
+}
+
+message AnswerReply{
+    string answer = 1;
+    string score = 2;
+} 
+
+message SumRequest{
+    string passage = 1;
+}
+
+message SumReply{
+    string summary = 1;
+}
+
+message QuestionRequest{
+    string passage = 1;
+    string term = 2;
+}
+
+message QuestionReply{
+    string question = 1;
+}
+
+service Mai {
+    rpc Mai(QueryRequest) returns (AnswerReply) {}
+}
+
+service Sum {
+    rpc Sum(SumRequest) returns (SumReply) {}
+}
+
+service Rui {
+    rpc Rui(QueryRequest) returns (QuestionReply) {}
+}
