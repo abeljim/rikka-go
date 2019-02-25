@@ -31,32 +31,22 @@ message SummaryReply{
 
 // The question request is made up of a passage and term 
 // The question will invlove the term based off passage 
+// can be any size 
 message QuestionRequest{
     string passage = 1;
     string term = 2;
 }
 
 // The question returned is a string 
+// max is words 
 message QuestionReply{
     string question = 1;
 }
 
-// This is the AI for getting a Question Answered 
-// Input is a passage and question 
-// Ouput is a answer and score 
-service MaiTheQueryGuy {
+// This is the serivce for all Ai related request 
+service Rikka {
     rpc Query(QueryRequest) returns (AnswerReply) {}
-}
-
-// This AI is for getting passages summarized
-// Input a Passage and recieve summary 
-service SusanTheDestroyer {
     rpc Summarize(SummaryRequest) returns (SummaryReply) {}
-}
-
-// This AI is for getting a question generated
-// input is a passage and related term 
-// output is a question 
-service RuiGivesQuestionSuggestion {
     rpc GenerateQuestion(QuestionRequest) returns (QuestionReply) {}
 }
+
