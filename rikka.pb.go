@@ -4,8 +4,10 @@
 package rikka
 
 import (
+	context "context"
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
 	math "math"
 )
 
@@ -324,4 +326,204 @@ var fileDescriptor_7e37513e3e56fce4 = []byte{
 	0xf2, 0x0a, 0xdb, 0x57, 0xb2, 0x64, 0x3f, 0xe4, 0xf8, 0x2e, 0xeb, 0x5d, 0x4b, 0x07, 0xcf, 0x63,
 	0xf3, 0x87, 0x5c, 0x7f, 0x05, 0x00, 0x00, 0xff, 0xff, 0x53, 0x36, 0x8d, 0xb5, 0x30, 0x02, 0x00,
 	0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// MaiTheQueryGuyClient is the client API for MaiTheQueryGuy service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type MaiTheQueryGuyClient interface {
+	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*AnswerReply, error)
+}
+
+type maiTheQueryGuyClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewMaiTheQueryGuyClient(cc *grpc.ClientConn) MaiTheQueryGuyClient {
+	return &maiTheQueryGuyClient{cc}
+}
+
+func (c *maiTheQueryGuyClient) Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*AnswerReply, error) {
+	out := new(AnswerReply)
+	err := c.cc.Invoke(ctx, "/MaiTheQueryGuy/Query", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// MaiTheQueryGuyServer is the server API for MaiTheQueryGuy service.
+type MaiTheQueryGuyServer interface {
+	Query(context.Context, *QueryRequest) (*AnswerReply, error)
+}
+
+func RegisterMaiTheQueryGuyServer(s *grpc.Server, srv MaiTheQueryGuyServer) {
+	s.RegisterService(&_MaiTheQueryGuy_serviceDesc, srv)
+}
+
+func _MaiTheQueryGuy_Query_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MaiTheQueryGuyServer).Query(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/MaiTheQueryGuy/Query",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MaiTheQueryGuyServer).Query(ctx, req.(*QueryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _MaiTheQueryGuy_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "MaiTheQueryGuy",
+	HandlerType: (*MaiTheQueryGuyServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Query",
+			Handler:    _MaiTheQueryGuy_Query_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "rikka.proto",
+}
+
+// SusanTheDestroyerClient is the client API for SusanTheDestroyer service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type SusanTheDestroyerClient interface {
+	Summarize(ctx context.Context, in *SummaryRequest, opts ...grpc.CallOption) (*SummaryReply, error)
+}
+
+type susanTheDestroyerClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewSusanTheDestroyerClient(cc *grpc.ClientConn) SusanTheDestroyerClient {
+	return &susanTheDestroyerClient{cc}
+}
+
+func (c *susanTheDestroyerClient) Summarize(ctx context.Context, in *SummaryRequest, opts ...grpc.CallOption) (*SummaryReply, error) {
+	out := new(SummaryReply)
+	err := c.cc.Invoke(ctx, "/SusanTheDestroyer/Summarize", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SusanTheDestroyerServer is the server API for SusanTheDestroyer service.
+type SusanTheDestroyerServer interface {
+	Summarize(context.Context, *SummaryRequest) (*SummaryReply, error)
+}
+
+func RegisterSusanTheDestroyerServer(s *grpc.Server, srv SusanTheDestroyerServer) {
+	s.RegisterService(&_SusanTheDestroyer_serviceDesc, srv)
+}
+
+func _SusanTheDestroyer_Summarize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SummaryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SusanTheDestroyerServer).Summarize(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/SusanTheDestroyer/Summarize",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SusanTheDestroyerServer).Summarize(ctx, req.(*SummaryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _SusanTheDestroyer_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "SusanTheDestroyer",
+	HandlerType: (*SusanTheDestroyerServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Summarize",
+			Handler:    _SusanTheDestroyer_Summarize_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "rikka.proto",
+}
+
+// RuiGivesQuestionSuggestionClient is the client API for RuiGivesQuestionSuggestion service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type RuiGivesQuestionSuggestionClient interface {
+	GenerateQuestion(ctx context.Context, in *QuestionRequest, opts ...grpc.CallOption) (*QuestionReply, error)
+}
+
+type ruiGivesQuestionSuggestionClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewRuiGivesQuestionSuggestionClient(cc *grpc.ClientConn) RuiGivesQuestionSuggestionClient {
+	return &ruiGivesQuestionSuggestionClient{cc}
+}
+
+func (c *ruiGivesQuestionSuggestionClient) GenerateQuestion(ctx context.Context, in *QuestionRequest, opts ...grpc.CallOption) (*QuestionReply, error) {
+	out := new(QuestionReply)
+	err := c.cc.Invoke(ctx, "/RuiGivesQuestionSuggestion/GenerateQuestion", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RuiGivesQuestionSuggestionServer is the server API for RuiGivesQuestionSuggestion service.
+type RuiGivesQuestionSuggestionServer interface {
+	GenerateQuestion(context.Context, *QuestionRequest) (*QuestionReply, error)
+}
+
+func RegisterRuiGivesQuestionSuggestionServer(s *grpc.Server, srv RuiGivesQuestionSuggestionServer) {
+	s.RegisterService(&_RuiGivesQuestionSuggestion_serviceDesc, srv)
+}
+
+func _RuiGivesQuestionSuggestion_GenerateQuestion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QuestionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RuiGivesQuestionSuggestionServer).GenerateQuestion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/RuiGivesQuestionSuggestion/GenerateQuestion",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RuiGivesQuestionSuggestionServer).GenerateQuestion(ctx, req.(*QuestionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _RuiGivesQuestionSuggestion_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "RuiGivesQuestionSuggestion",
+	HandlerType: (*RuiGivesQuestionSuggestionServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GenerateQuestion",
+			Handler:    _RuiGivesQuestionSuggestion_GenerateQuestion_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "rikka.proto",
 }
