@@ -3,9 +3,13 @@
 
 package rikka
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	context "context"
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	grpc "google.golang.org/grpc"
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -16,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // This is a request for a question to be answered based off a passage
 // currently passage max is 386 words and 50 for question
@@ -33,16 +37,17 @@ func (m *QueryRequest) Reset()         { *m = QueryRequest{} }
 func (m *QueryRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryRequest) ProtoMessage()    {}
 func (*QueryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rikka_d6eccab60ab1121b, []int{0}
+	return fileDescriptor_7e37513e3e56fce4, []int{0}
 }
+
 func (m *QueryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QueryRequest.Unmarshal(m, b)
 }
 func (m *QueryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_QueryRequest.Marshal(b, m, deterministic)
 }
-func (dst *QueryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryRequest.Merge(dst, src)
+func (m *QueryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryRequest.Merge(m, src)
 }
 func (m *QueryRequest) XXX_Size() int {
 	return xxx_messageInfo_QueryRequest.Size(m)
@@ -82,16 +87,17 @@ func (m *AnswerReply) Reset()         { *m = AnswerReply{} }
 func (m *AnswerReply) String() string { return proto.CompactTextString(m) }
 func (*AnswerReply) ProtoMessage()    {}
 func (*AnswerReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rikka_d6eccab60ab1121b, []int{1}
+	return fileDescriptor_7e37513e3e56fce4, []int{1}
 }
+
 func (m *AnswerReply) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AnswerReply.Unmarshal(m, b)
 }
 func (m *AnswerReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_AnswerReply.Marshal(b, m, deterministic)
 }
-func (dst *AnswerReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AnswerReply.Merge(dst, src)
+func (m *AnswerReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AnswerReply.Merge(m, src)
 }
 func (m *AnswerReply) XXX_Size() int {
 	return xxx_messageInfo_AnswerReply.Size(m)
@@ -129,16 +135,17 @@ func (m *SummaryRequest) Reset()         { *m = SummaryRequest{} }
 func (m *SummaryRequest) String() string { return proto.CompactTextString(m) }
 func (*SummaryRequest) ProtoMessage()    {}
 func (*SummaryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rikka_d6eccab60ab1121b, []int{2}
+	return fileDescriptor_7e37513e3e56fce4, []int{2}
 }
+
 func (m *SummaryRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SummaryRequest.Unmarshal(m, b)
 }
 func (m *SummaryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SummaryRequest.Marshal(b, m, deterministic)
 }
-func (dst *SummaryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SummaryRequest.Merge(dst, src)
+func (m *SummaryRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SummaryRequest.Merge(m, src)
 }
 func (m *SummaryRequest) XXX_Size() int {
 	return xxx_messageInfo_SummaryRequest.Size(m)
@@ -169,16 +176,17 @@ func (m *SummaryReply) Reset()         { *m = SummaryReply{} }
 func (m *SummaryReply) String() string { return proto.CompactTextString(m) }
 func (*SummaryReply) ProtoMessage()    {}
 func (*SummaryReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rikka_d6eccab60ab1121b, []int{3}
+	return fileDescriptor_7e37513e3e56fce4, []int{3}
 }
+
 func (m *SummaryReply) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SummaryReply.Unmarshal(m, b)
 }
 func (m *SummaryReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SummaryReply.Marshal(b, m, deterministic)
 }
-func (dst *SummaryReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SummaryReply.Merge(dst, src)
+func (m *SummaryReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SummaryReply.Merge(m, src)
 }
 func (m *SummaryReply) XXX_Size() int {
 	return xxx_messageInfo_SummaryReply.Size(m)
@@ -211,16 +219,17 @@ func (m *QuestionRequest) Reset()         { *m = QuestionRequest{} }
 func (m *QuestionRequest) String() string { return proto.CompactTextString(m) }
 func (*QuestionRequest) ProtoMessage()    {}
 func (*QuestionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rikka_d6eccab60ab1121b, []int{4}
+	return fileDescriptor_7e37513e3e56fce4, []int{4}
 }
+
 func (m *QuestionRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuestionRequest.Unmarshal(m, b)
 }
 func (m *QuestionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_QuestionRequest.Marshal(b, m, deterministic)
 }
-func (dst *QuestionRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QuestionRequest.Merge(dst, src)
+func (m *QuestionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QuestionRequest.Merge(m, src)
 }
 func (m *QuestionRequest) XXX_Size() int {
 	return xxx_messageInfo_QuestionRequest.Size(m)
@@ -258,16 +267,17 @@ func (m *QuestionReply) Reset()         { *m = QuestionReply{} }
 func (m *QuestionReply) String() string { return proto.CompactTextString(m) }
 func (*QuestionReply) ProtoMessage()    {}
 func (*QuestionReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_rikka_d6eccab60ab1121b, []int{5}
+	return fileDescriptor_7e37513e3e56fce4, []int{5}
 }
+
 func (m *QuestionReply) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_QuestionReply.Unmarshal(m, b)
 }
 func (m *QuestionReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_QuestionReply.Marshal(b, m, deterministic)
 }
-func (dst *QuestionReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QuestionReply.Merge(dst, src)
+func (m *QuestionReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QuestionReply.Merge(m, src)
 }
 func (m *QuestionReply) XXX_Size() int {
 	return xxx_messageInfo_QuestionReply.Size(m)
@@ -294,9 +304,9 @@ func init() {
 	proto.RegisterType((*QuestionReply)(nil), "QuestionReply")
 }
 
-func init() { proto.RegisterFile("rikka.proto", fileDescriptor_rikka_d6eccab60ab1121b) }
+func init() { proto.RegisterFile("rikka.proto", fileDescriptor_7e37513e3e56fce4) }
 
-var fileDescriptor_rikka_d6eccab60ab1121b = []byte{
+var fileDescriptor_7e37513e3e56fce4 = []byte{
 	// 266 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0xcd, 0x4a, 0xc3, 0x40,
 	0x14, 0x85, 0x13, 0x31, 0xad, 0x3d, 0x4d, 0xda, 0x72, 0x11, 0x09, 0x59, 0xc9, 0x2c, 0xa4, 0x28,
@@ -315,4 +325,142 @@ var fileDescriptor_rikka_d6eccab60ab1121b = []byte{
 	0x87, 0x35, 0x85, 0x47, 0x37, 0x58, 0x3d, 0x72, 0xc1, 0x5a, 0xd5, 0xdc, 0xa7, 0xa2, 0x95, 0xfc,
 	0xd5, 0x30, 0x59, 0xc8, 0x51, 0x64, 0xe1, 0x3d, 0x4f, 0xec, 0x6f, 0xbe, 0xfe, 0x0e, 0x00, 0x00,
 	0xff, 0xff, 0x3d, 0x4f, 0xe5, 0xc2, 0xf5, 0x01, 0x00, 0x00,
+}
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+const _ = grpc.SupportPackageIsVersion4
+
+// RikkaClient is the client API for Rikka service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type RikkaClient interface {
+	Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*AnswerReply, error)
+	Summarize(ctx context.Context, in *SummaryRequest, opts ...grpc.CallOption) (*SummaryReply, error)
+	GenerateQuestion(ctx context.Context, in *QuestionRequest, opts ...grpc.CallOption) (*QuestionReply, error)
+}
+
+type rikkaClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewRikkaClient(cc *grpc.ClientConn) RikkaClient {
+	return &rikkaClient{cc}
+}
+
+func (c *rikkaClient) Query(ctx context.Context, in *QueryRequest, opts ...grpc.CallOption) (*AnswerReply, error) {
+	out := new(AnswerReply)
+	err := c.cc.Invoke(ctx, "/Rikka/Query", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rikkaClient) Summarize(ctx context.Context, in *SummaryRequest, opts ...grpc.CallOption) (*SummaryReply, error) {
+	out := new(SummaryReply)
+	err := c.cc.Invoke(ctx, "/Rikka/Summarize", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rikkaClient) GenerateQuestion(ctx context.Context, in *QuestionRequest, opts ...grpc.CallOption) (*QuestionReply, error) {
+	out := new(QuestionReply)
+	err := c.cc.Invoke(ctx, "/Rikka/GenerateQuestion", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RikkaServer is the server API for Rikka service.
+type RikkaServer interface {
+	Query(context.Context, *QueryRequest) (*AnswerReply, error)
+	Summarize(context.Context, *SummaryRequest) (*SummaryReply, error)
+	GenerateQuestion(context.Context, *QuestionRequest) (*QuestionReply, error)
+}
+
+func RegisterRikkaServer(s *grpc.Server, srv RikkaServer) {
+	s.RegisterService(&_Rikka_serviceDesc, srv)
+}
+
+func _Rikka_Query_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RikkaServer).Query(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Rikka/Query",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RikkaServer).Query(ctx, req.(*QueryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Rikka_Summarize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SummaryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RikkaServer).Summarize(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Rikka/Summarize",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RikkaServer).Summarize(ctx, req.(*SummaryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Rikka_GenerateQuestion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QuestionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RikkaServer).GenerateQuestion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/Rikka/GenerateQuestion",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RikkaServer).GenerateQuestion(ctx, req.(*QuestionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Rikka_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "Rikka",
+	HandlerType: (*RikkaServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Query",
+			Handler:    _Rikka_Query_Handler,
+		},
+		{
+			MethodName: "Summarize",
+			Handler:    _Rikka_Summarize_Handler,
+		},
+		{
+			MethodName: "GenerateQuestion",
+			Handler:    _Rikka_GenerateQuestion_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "rikka.proto",
 }
