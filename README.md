@@ -1,11 +1,9 @@
 # Rikka go client
 
-# General idea
-For the mai servicer input a passage and question and recieve an answer and score.
+Connect with gRPC client on port 50051.
 
-For the sum servicer input a passage and reveive a summary.
+## Generating the Go client
+```bash
+protoc rikka.proto --go_out=plugins=grpc:.
+```
 
-For the rui servicer input a passage and term and recive question based on term.
-
-# Server Port 
-50051 
