@@ -8,11 +8,11 @@ service Rikka {
 }
 
 message QueryRequest {
-  // The passage to query upon. Maximum of 386 words, but subject to change and
+  // The passage to query upon. Maximum of 384 words, but subject to change and
   // updated information can be found in Rikka the GitHub settings file.
   string passage = 1;
 
-  // The question to ask on the provided passage. Maximum of 50 words.
+  // The question to ask on the provided passage. Maximum of 64 words.
   string question = 2;
 }
 
@@ -38,7 +38,7 @@ message QuestionRequest {
   // The passage, of any size, to generate a question from.
   string passage = 1;
 
-  // The keyword for the basis of the generated question .
+  // The keyword for the basis of the generated question.
   string term = 2;
 }
 
