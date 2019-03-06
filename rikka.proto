@@ -14,7 +14,7 @@ message QueryRequest{
 // score is a float returned as a string for flexiblity 
 message AnswerReply{
     string answer = 1;
-    string score = 2;
+    float score = 2;
 } 
 
 // The Summary request is made up of a passage 

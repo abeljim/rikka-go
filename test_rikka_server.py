@@ -12,7 +12,7 @@ class RikkaServicer(rikka_pb2_grpc.RikkaServicer):
     def Query(self, request, context):
         response = rikka_pb2.AnswerReply()
         response.answer = "Test Answer return Correct"
-        response.score = "0.999"
+        response.score = 0.999
         return response
 
     def Summarize(self, request, context):
