@@ -21,7 +21,7 @@ message AnswerReply {
   string answer = 1;
 
   // The probability of the answer returned by the neural network.
-  double score = 2;
+  float score = 2;
 }
 
 message SummaryRequest {
