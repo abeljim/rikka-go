@@ -5,7 +5,7 @@ import rikka_pb2 as rikka__pb2
 
 
 class RikkaStub(object):
-  """This is the serivce for all Ai related request 
+  """Rikka is the service for all AI related tasks.
   """
 
   def __init__(self, channel):
@@ -32,7 +32,7 @@ class RikkaStub(object):
 
 
 class RikkaServicer(object):
-  """This is the serivce for all Ai related request 
+  """Rikka is the service for all AI related tasks.
   """
 
   def Query(self, request, context):
