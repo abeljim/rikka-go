@@ -1,52 +1,48 @@
 syntax = "proto3";
 
-
-// This is a request for a question to be answered based off a passage 
-// currently passage max is 386 words and 50 for question 
-// This is subject to change and updated information can be found in Rikka github settings file
-message QueryRequest{ 
-    string passage = 1;
-    string question = 2;
-}
-
-// This is the reply from a query request consisting of a answer and a score
-// answer as no limitations on size except as big as inputed passage 
-// score is a float returned as a string for flexiblity 
-message AnswerReply{
-    string answer = 1;
-    float score = 2;
-} 
-
-// The Summary request is made up of a passage 
-// Any size is fine 
-message SummaryRequest{
-    string passage = 1;
-}
-
-// The Reply is a string of any size 
-// Just smaller than the orginal
-message SummaryReply{
-    string summary = 1;
-}
-
-// The question request is made up of a passage and term 
-// The question will invlove the term based off passage 
-// can be any size 
-message QuestionRequest{
-    string passage = 1;
-    string term = 2;
-}
-
-// The question returned is a string 
-// max is words 
-message QuestionReply{
-    string question = 1;
-}
-
-// This is the serivce for all Ai related request 
+// Rikka is the service for all AI related tasks.
 service Rikka {
-    rpc Query(QueryRequest) returns (AnswerReply) {}
-    rpc Summarize(SummaryRequest) returns (SummaryReply) {}
-    rpc GenerateQuestion(QuestionRequest) returns (QuestionReply) {}
+  rpc Query(QueryRequest) returns (AnswerReply) {}
+  rpc Summarize(SummaryRequest) returns (SummaryReply) {}
+  rpc GenerateQuestion(QuestionRequest) returns (QuestionReply) {}
 }
 
+message QueryRequest {
+  // The passage to query upon. Maximum of 384 words, but subject to change and
+  // updated information can be found in Rikka the GitHub settings file.
+  string passage = 1;
+
+  // The question to ask on the provided passage. Maximum of 64 words.
+  string question = 2;
+}
+
+message AnswerReply {
+  // The answer to the previously provided question.
+  string answer = 1;
+
+  // The probability of the answer returned by the neural network.
+  float score = 2;
+}
+
+message SummaryRequest {
+  // The passage to summarize.
+  string passage = 1;
+}
+
+message SummaryReply {
+  // The summarized version of the previously provided passage.
+  string summary = 1;
+}
+
+message QuestionRequest {
+  // The passage, of any size, to generate a question from.
+  string passage = 1;
+
+  // The keyword for the basis of the generated question.
+  string term = 2;
+}
+
+message QuestionReply {
+  // The question generated from the previously provided passage and term.
+  string question = 1;
+}
